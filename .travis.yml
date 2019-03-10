@@ -1,0 +1,7 @@
+sudo: require
+before_install:
+    - docker build -t matusdubrava/express-server .
+script:
+    - docker container run matusdubrava/express-server npm run test
+services:
+    - docker
