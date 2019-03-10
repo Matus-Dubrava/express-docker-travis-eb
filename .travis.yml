@@ -5,3 +5,15 @@ script:
     - docker container run matusdubrava/express-server npm run test
 services:
     - docker
+deploy:
+    provider: elasticbeanstalk
+    region: us-east-1
+    app: express-docker-travis-eb
+    env: ExpressDockerTravisEb-env
+    bucket_name: elasticbeanstalk-us-east-1-859119227216
+    bucket_path: express-docker-travis-eb
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: $AWS_SECRET_KEY
